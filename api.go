@@ -16,8 +16,12 @@ func NewBot(token string) *TelegramBot {
 	return &TelegramBot{token}
 }
 
+func smash(token, method string) string {
+	return fmt.Sprintf(telegramAPI, token, method)
+}
+
 func (bot TelegramBot) GetUpdates() ([]TelegramUpdate, error) {
-	resp, err := http.Get(fmt.Sprintf(telegramAPI, bot.token, "getUpdates"))
+	resp, err := http.Get(smash(bot.token, "getUpdates"))
 	if err != nil {
 		return []TelegramUpdate{}, err
 	}
@@ -30,7 +34,7 @@ func (bot TelegramBot) GetUpdates() ([]TelegramUpdate, error) {
 }
 
 func (bot TelegramBot) GetMe() (TelegramUser, error) {
-	resp, err := http.Get(fmt.Sprintf(telegramAPI, bot.token, "getMe"))
+	resp, err := http.Get(smash(bot.token, "getMe"))
 	if err != nil {
 		return TelegramUser{}, err
 	}
