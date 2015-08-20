@@ -20,3 +20,5 @@ Go library as a wrapper of the Telegram Bot API.
 		}
 		fmt.Printf("Hello, my name is %s", myBot.Username)
 	}
+
+**Please note that the API is still under heavy development.** It still isn't ready to use.ill isn't ready to use.
